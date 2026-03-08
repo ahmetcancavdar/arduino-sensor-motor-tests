@@ -1,31 +1,31 @@
 # arduino-sensor-motor-tests
 A collection of basic Arduino test scripts for motor control, motion sensing, and GPS tracking.
-# Arduino Sensör ve Motor Kontrol Modülleri 🚀
+# Arduino Sensor and Motor Control Modules 🚀
 
-Bu depo, Arduino ile yapılan robotik ve otonom sistem projelerinde en sık kullanılan üç temel donanımın bağımsız test ve kullanım kodlarını içermektedir. Kodlar; hareket, denge/yönelim ve konum takibi işlemlerini anlamak için minimal ve anlaşılır şekilde yazılmıştır.
+This repository contains independent test and usage codes for three fundamental hardware components frequently used in Arduino-based robotics and autonomous system projects. The codes are written in a minimal and easy-to-understand way to help you grasp the concepts of movement, balance/orientation, and location tracking.
 
-## 🛠️ Kullanılan Donanımlar ve Özellikleri
+## 🛠️ Hardware Used and Features
 
-1. **L298N Motor Sürücü**
-   * Seri Port ekranından gönderilen basit karakterlerle (`w`: ileri, `s`: geri, `x`: dur) DC motor kontrolü sağlar.
-   * PWM kullanılarak hız kontrolü (0-255 arası) yapılabilir.
+1. **L298N Motor Driver**
+   * Provides DC motor control using simple characters (`w`: forward, `s`: backward, `x`: stop) sent via the Serial Monitor.
+   * Allows speed control (between 0-255) using PWM.
 
-2. **MPU6050 IMU (İvmeölçer ve Jiroskop)**
-   * I2C protokolü kullanılarak sensörle haberleşilir.
-   * X, Y, Z eksenlerinde ivme (g) ve dönüş hızı (dps) verilerini anlık olarak Seri Port'a yazdırır.
-   * Modül üzerindeki dahili sıcaklık sensörünün (Temp) verisini okur.
+2. **MPU6050 IMU (Accelerometer and Gyroscope)**
+   * Communicates with the sensor using the I2C protocol.
+   * Prints real-time acceleration (g) and angular velocity (dps) data on the X, Y, and Z axes to the Serial Monitor.
+   * Reads data from the built-in temperature sensor (Temp) on the module.
 
-3. **NEO-6M GPS Modülü**
-   * `TinyGPS++` ve `SoftwareSerial` kütüphaneleri kullanılarak uydudan gelen NMEA verileri anlamlı hale getirilir.
-   * Cihaz uyduya bağlandığında anlık **Enlem (Latitude)** ve **Boylam (Longitude)** verilerini virgülle ayrılmış şekilde verir.
+3. **NEO-6M GPS Module**
+   * Parses NMEA data received from satellites using the `TinyGPS++` and `SoftwareSerial` libraries.
+   * Once the device gets a satellite fix, it outputs real-time **Latitude** and **Longitude** data in a comma-separated format.
 
-## 📂 Klasör Yapısı
+## 📂 Folder Structure
 
-Projeyi klonladığınızda 3 farklı Arduino `.ino` dosyası göreceksiniz. Her donanımı projenize dahil etmeden önce bu kodlarla tekil olarak test edebilirsiniz.
+When you clone the project, you will find 3 different Arduino `.ino` files. You can test each hardware component individually using these scripts before integrating them into your main project.
 
-## 🚀 Nasıl Kullanılır?
+## 🚀 How to Use
 
-1. Test etmek istediğiniz donanımın kodunu Arduino IDE ile açın.
-2. Gerekli kablo bağlantılarını (pin numaraları kodların başında belirtilmiştir) yapın.
-3. Kodu Arduino'ya yükleyin.
-4. `Araçlar > Seri Port Ekranı`'nı (Baud Rate değerine dikkat ederek: Motor ve GPS için 9600, IMU için 115200) açın ve verileri inceleyin.
+1. Open the code for the hardware you want to test in the Arduino IDE.
+2. Make the necessary wiring connections (pin numbers are specified at the top of each code).
+3. Upload the code to your Arduino.
+4. Open `Tools > Serial Monitor` (paying attention to the Baud Rate: 9600 for the Motor and GPS, 115200 for the IMU) and observe the data.
